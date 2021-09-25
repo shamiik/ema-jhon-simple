@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { addToDb } from '../../utilities/fakedb';
+import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
@@ -10,8 +10,30 @@ const Shop = () => {
     useEffect(() => {
         fetch('./products.JSON')
             .then(res => res.json())
-            .then(data => setProducts(data))
+            .then(data => {
+                setProducts(data);
+                console.log('Products received');
+            });
     }, []);
+
+
+    useEffect(() => {
+        console.log('LocalStorage Cart Called')
+        // console.log(savedCart);
+        if (products.length) {
+            const savedCart = getStoredCart();
+            const storedCart = [];
+            for (const key in savedCart) {
+                // console.log(key);
+                // console.log(products);
+                const addedProduct = products.find(product => product.key === key);
+                storedCart.push(addedProduct);
+                // console.log(key, addedProduct);
+            }
+            setCart(storedCart);
+        }
+    }, [products])
+
 
     const handleAddToCart = (product) => {
         const newCart = [...cart, product];
