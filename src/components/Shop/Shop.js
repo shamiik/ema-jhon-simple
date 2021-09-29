@@ -7,6 +7,8 @@ import './Shop.css'
 const Shop = () => {
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
+
+    //products to be rendered on the UI
     const [displayProducts, setDisplayProducts] = useState([]);
 
     useEffect(() => {
@@ -29,7 +31,7 @@ const Shop = () => {
             for (const key in savedCart) {
                 // console.log(key);
                 // console.log(products);
-                console.log(key, savedCart[key]);
+                // console.log(key, savedCart[key]);
                 const addedProduct = products.find(product => product.key === key);
                 if (addedProduct) {
                     const quantity = savedCart[key];
