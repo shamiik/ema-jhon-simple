@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { addToDb, getStoredCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
@@ -36,7 +37,7 @@ const Shop = () => {
                 if (addedProduct) {
                     const quantity = savedCart[key];
                     addedProduct.quantity = quantity;
-                    console.log(addedProduct);
+                    // console.log(addedProduct);
                     storedCart.push(addedProduct);
                 }
 
@@ -83,7 +84,11 @@ const Shop = () => {
                     }
                 </div>
                 <div className="cart-container">
-                    <Cart cart={cart}></Cart>
+                    <Cart cart={cart}>
+                        <Link to="/review">
+                            <button className="btn-regular">Review your Order</button>
+                        </Link>
+                    </Cart>
                 </div>
             </div>
         </>
