@@ -6,6 +6,7 @@ import './Header.css'
 
 const Header = () => {
     const { user, logOut } = useFirebase();
+
     return (
         <div className='header'>
             <img className='logo' src={logo} alt="" />

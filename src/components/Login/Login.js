@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import useFirebase from '../../hooks/useFirebse';
+import useFirebase from '../../hooks/useFirebase';
 import "./Login.css";
 
 const Login = () => {
